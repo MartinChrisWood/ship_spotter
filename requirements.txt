@@ -1,0 +1,8 @@
+pre-commit
+numpy
+pandas
+jupyter
+keras
+tensorflow-macos
+matplotlib
+seaborn
