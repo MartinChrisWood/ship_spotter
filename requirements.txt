@@ -1,8 +1,10 @@
 pre-commit
 numpy
 pandas
+scipy
 jupyter
 keras
-tensorflow-macos
+tensorflow-macos # For using tensorflow on a mac
+tensorflow-metal # For using Apple GPU instructions ("metal" framework)
 matplotlib
 seaborn
