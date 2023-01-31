@@ -27,8 +27,6 @@ def quick_plot_imggen(img, datagen, n_examples=6):
     # Organise some subplots
     fig, axs = plt.subplots(2, int(np.ceil(n_examples / 2)))
 
-    print(axs)
-
     for batch in datagen.flow(img, batch_size=1):
         # Dump augmented image to a subplot
         x = i % 2
@@ -44,7 +42,11 @@ def quick_plot_imggen(img, datagen, n_examples=6):
 
 
 def train_test_validation_split(
-    X: iter, y: iter, train_size: float = 0.8, validation=True
+    X: iter,
+    y: iter,
+    train_size: float = 0.8,
+    validation=True,
+    data_cap: int = None,  # noqa:E501
 ):
     """
     Shuffles and splits features and labels at random into training, validation
@@ -57,6 +59,7 @@ def train_test_validation_split(
             Defaults to 0.8.
         validation (bool, optional): Wether to split the test set further
             into test and validation. Defaults to True.
+        data_cap (int, optional): limit on how much data to create total
 
     Returns:
         tuple: training, validation and test features and labels.
@@ -65,6 +68,8 @@ def train_test_validation_split(
     # Shuffle the data at random
     data = list(zip(X, y))
     shuffle(data)
+    if data_cap:
+        data = data[:data_cap]
     X, y = zip(*data)
 
     train_X = None
