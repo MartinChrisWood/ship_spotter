@@ -97,11 +97,10 @@ def train_test_validation_split(
         test_y = y[train_cutoff:]
 
     # Report the result - it's random so someone might want to retry
-    stats = (
-        f"train: {len(train_X)}, "
-        + f"validation: {len(val_X)}, "
-        + f"test: {len(test_X)}"
-    )
+    stats = f"train: {len(train_X)}, "
+    if validation:
+        stats = stats + f"validation: {len(val_X)}, "
+    stats = stats + f"test: {len(test_X)}"
     print(stats)
 
     if val_X:
